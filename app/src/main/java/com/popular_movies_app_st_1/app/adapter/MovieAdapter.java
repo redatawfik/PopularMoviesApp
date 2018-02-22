@@ -13,9 +13,11 @@ import com.popular_movies_app_st_1.app.R;
 import com.popular_movies_app_st_1.app.model.Movie;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    private Movie[] moviesArray;
+    private ArrayList<Movie> moviesArrayList;
 
     private Context context;
 
@@ -25,8 +27,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         void onClick(int position);
     }
 
-    public MovieAdapter(Movie[] moviesArray, Context context, MovieAdapterOnClickHandler clickHandler) {
-        this.moviesArray = moviesArray;
+    public MovieAdapter(ArrayList<Movie> moviesArrayList, Context context, MovieAdapterOnClickHandler clickHandler) {
+        this.moviesArrayList = moviesArrayList;
         this.context = context;
         this.mClickHandler = clickHandler;
     }
@@ -37,23 +39,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Context context = parent.getContext();
         int layoutIdForListItem = R.layout.movie_item;
         LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
 
-        View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
+
+        View view = inflater.inflate(layoutIdForListItem, parent, false);
         return new MovieViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        Picasso.with(context).load(moviesArray[position].getPosterImage()).into(holder.imageView);
+        Picasso.with(context).load(moviesArrayList.get(position).getPosterImage()).into(holder.imageView);
 
     }
 
     @Override
     public int getItemCount() {
-        if (moviesArray != null) {
-            return moviesArray.length;
+        if (moviesArrayList != null) {
+            return moviesArrayList.size();
         } else {
             return 0;
         }
@@ -79,8 +81,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
     }
 
-    public void setMoviesArray(Movie[] movies) {
-        moviesArray = movies;
+    public void setMoviesArray() {
+        moviesArrayList = null;
         notifyDataSetChanged();
 
     }

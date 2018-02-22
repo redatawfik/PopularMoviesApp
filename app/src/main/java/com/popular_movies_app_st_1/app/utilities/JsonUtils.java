@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class JsonUtils {
 
     private static final String TAG = JsonUtils.class.getSimpleName();
@@ -24,7 +26,7 @@ public class JsonUtils {
     private static final String BACKDROP_PATH = "backdrop_path";
 
 
-    public static Movie parseMovieJson(String json) {
+    private static Movie parseMovieJson(String json) {
 
         Movie movie = null;
 
@@ -54,9 +56,9 @@ public class JsonUtils {
         return movie;
     }
 
-    public static Movie[] getMoviesArray(String json) {
+    public static ArrayList<Movie> getMoviesArrayList(String json) {
 
-        Movie[] moviesArray = null;
+       ArrayList<Movie>  moviesArrayList = null;
 
         try {
 
@@ -65,11 +67,11 @@ public class JsonUtils {
 
             if (moviesList != null) {
 
-                moviesArray = new Movie[moviesList.length()];
+                moviesArrayList = new ArrayList<>(moviesList.length());
 
 
                 for (int i = 0; i < moviesList.length(); i++) {
-                    moviesArray[i] = parseMovieJson(moviesList.get(i).toString());
+                    moviesArrayList.add( parseMovieJson(moviesList.get(i).toString()));
                 }
 
             }
@@ -78,7 +80,7 @@ public class JsonUtils {
         }
 
 
-        return moviesArray;
+        return moviesArrayList;
     }
 
 

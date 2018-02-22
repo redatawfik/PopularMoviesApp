@@ -8,31 +8,25 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.popular_movies_app_st_1.app.adapter.MovieAdapter;
 import com.popular_movies_app_st_1.app.model.Movie;
 import com.popular_movies_app_st_1.app.utilities.JsonUtils;
 import com.popular_movies_app_st_1.app.utilities.NetworkUtils;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
-import static android.content.Intent.EXTRA_INDEX;
-import static android.content.Intent.EXTRA_REFERRER;
 import static com.popular_movies_app_st_1.app.utilities.NetworkUtils.getResponseFromHttpUrl;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
@@ -40,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private static final String TAG = MainActivity.class.getSimpleName();
     Context context = this;
 
-    Movie[] moviesArray;
+    ArrayList<Movie> moviesArrayList;
 
     RecyclerView mRecyclerView;
     MovieAdapter mMovieAdapter;
@@ -68,11 +62,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     boolean checkInternetConnection() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        assert cm != null;
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
 
-        return isConnected;
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
     }
 
 
@@ -110,12 +104,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     @Override
     public void onClick(int position) {
 
-        String originalTitle = moviesArray[position].getOriginalTitle();
-        String overview = moviesArray[position].getOverview();
-        String posterImage = moviesArray[position].getPosterImage();
-        double votRange = moviesArray[position].getVotRange();
-        String releaseDate = moviesArray[position].getReleaseDate();
-        String backdropPath = moviesArray[position].getBackdropPath();
+        String originalTitle = moviesArrayList.get(position).getOriginalTitle();
+        String overview = moviesArrayList.get(position).getOverview();
+        String posterImage = moviesArrayList.get(position).getPosterImage();
+        double votRange = moviesArrayList.get(position).getVotRange();
+        String releaseDate = moviesArrayList.get(position).getReleaseDate();
+        String backdropPath = moviesArrayList.get(position).getBackdropPath();
 
 
         Intent intent = new Intent(this, DetailsActivity.class);
@@ -150,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         @Override
         protected void onPostExecute(String s) {
-            moviesArray = JsonUtils.getMoviesArray(s);
-            mMovieAdapter = new MovieAdapter(moviesArray, context, (MovieAdapter.MovieAdapterOnClickHandler) context);
+            moviesArrayList = JsonUtils.getMoviesArrayList(s);
+            mMovieAdapter = new MovieAdapter(moviesArrayList, context, (MovieAdapter.MovieAdapterOnClickHandler) context);
             progressBar.setVisibility(View.INVISIBLE);
             setRecyclerView();
 
@@ -173,19 +167,19 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         if (itemId == R.id.most_popular_action) {
 
-            mMovieAdapter.setMoviesArray(null);
+            mMovieAdapter.setMoviesArray();
             loadMoviesData(MOST_POPULAR);
             return true;
 
         } else if (itemId == R.id.top_rated_action) {
 
-            mMovieAdapter.setMoviesArray(null);
+            mMovieAdapter.setMoviesArray();
             loadMoviesData(TOP_RATED);
             return true;
 
         } else if (itemId == R.id.upcoming_action) {
 
-            mMovieAdapter.setMoviesArray(null);
+            mMovieAdapter.setMoviesArray();
             loadMoviesData(UPCOMING);
             return true;
 
