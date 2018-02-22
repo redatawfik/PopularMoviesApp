@@ -1,14 +1,11 @@
 package com.popular_movies_app_st_1.app.utilities;
 
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.popular_movies_app_st_1.app.model.Movie;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;

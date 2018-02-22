@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+
 public class DetailsActivity extends AppCompatActivity {
 
     private TextView originalTitleTextView;
@@ -63,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         originalTitleTextView.setText(originalTitle);
         overviewTextView.setText(overview);
-        votRangeTextView.setText(String.valueOf(votRange) + "/10");
+        votRangeTextView.setText(votRangeString());
         releaseDateTextView.setText(releaseDate.subSequence(0, 4));
 
         Picasso.with(this).load(posterImage).into(posterImageTextView);
@@ -71,4 +73,13 @@ public class DetailsActivity extends AppCompatActivity {
 
 
     }
+
+    private String votRangeString() {
+
+        DecimalFormat df = new DecimalFormat("#.#");
+        String newVotRange = df.format(votRange);
+        return newVotRange + getString(R.string.rate_percent);
+    }
+
+
 }

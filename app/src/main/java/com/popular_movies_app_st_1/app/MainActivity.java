@@ -32,14 +32,14 @@ import static com.popular_movies_app_st_1.app.utilities.NetworkUtils.getResponse
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    Context context = this;
+    private final Context context = this;
 
-    ArrayList<Movie> moviesArrayList;
+    private ArrayList<Movie> moviesArrayList;
 
-    RecyclerView mRecyclerView;
-    MovieAdapter mMovieAdapter;
-    ProgressBar progressBar;
-    TextView errorMessageTextView;
+    private RecyclerView mRecyclerView;
+    private MovieAdapter mMovieAdapter;
+    private ProgressBar progressBar;
+    private TextView errorMessageTextView;
 
     private static final String TOP_RATED = "top_rated";
     private static final String MOST_POPULAR = "popular";
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mRecyclerView = findViewById(R.id.rv_movies);
         progressBar = findViewById(R.id.pb_loading);
         errorMessageTextView = findViewById(R.id.tv_error_message);
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
 
-    boolean checkInternetConnection() {
+    private boolean checkInternetConnection() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         assert cm != null;
@@ -70,17 +71,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
 
-    void showErrorMessage() {
+    private void showErrorMessage() {
         mRecyclerView.setVisibility(View.INVISIBLE);
         errorMessageTextView.setVisibility(View.VISIBLE);
     }
 
-    void showMoviesList() {
+    private void showMoviesList() {
         mRecyclerView.setVisibility(View.VISIBLE);
         errorMessageTextView.setVisibility(View.INVISIBLE);
     }
 
-    void loadMoviesData(String sortBy) {
+    private void loadMoviesData(String sortBy) {
         if (checkInternetConnection()) {
             showMoviesList();
         } else showErrorMessage();
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         new MoviesAsyncTask().execute(url);
     }
 
-    void setRecyclerView() {
+    private void setRecyclerView() {
 
 
         int numberOfColumn = 2;

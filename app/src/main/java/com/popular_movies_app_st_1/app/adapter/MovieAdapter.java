@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.popular_movies_app_st_1.app.R;
 import com.popular_movies_app_st_1.app.model.Movie;
@@ -19,9 +18,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     private ArrayList<Movie> moviesArrayList;
 
-    private Context context;
+    private final Context context;
 
-    private MovieAdapterOnClickHandler mClickHandler;
+    private final MovieAdapterOnClickHandler mClickHandler;
 
     public interface MovieAdapterOnClickHandler {
         void onClick(int position);
@@ -64,7 +63,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView imageView;
+        final ImageView imageView;
 
         MovieViewHolder(View itemView) {
             super(itemView);

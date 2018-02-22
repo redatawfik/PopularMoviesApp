@@ -4,15 +4,14 @@ public class Movie {
 
     private static final String BASE_URI = "https://image.tmdb.org/t/p/w500";
 
-    private String originalTitle;
-    private String overview;
-    private String posterImage;
-    private double votRange;
-    private String releaseDate;
-    private String backdropPath;
+    private final String originalTitle;
+    private final String overview;
+    private final String posterImage;
+    private final double votRange;
+    private final String releaseDate;
+    private final String backdropPath;
 
-    public Movie() {
-    }
+
 
     public Movie(String originalTitle, String overview, String posterImage, double votRange, String releaseDate, String backdropPath) {
 
@@ -23,34 +22,6 @@ public class Movie {
         this.releaseDate = releaseDate;
         this.backdropPath = BASE_URI + backdropPath;
     }
-
-    //setter Methods
-    //------------------------------------------------------
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public void setPosterImage(String posterImage) {
-        this.posterImage = posterImage;
-    }
-
-    public void setVotRange(double votRange) {
-        this.votRange = votRange;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
-
-    //----------------------------------------------------------
 
 
     //getter methods

@@ -2,7 +2,6 @@ package com.popular_movies_app_st_1.app.utilities;
 
 
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class NetworkUtils {
         try {
             url = new URL(buildUri.toString());
         } catch (Exception e) {
-            Log.v(TAG, "Build URL " + url);
+            Log.v(TAG, "Build URL " + e);
         }
 
         return url;
