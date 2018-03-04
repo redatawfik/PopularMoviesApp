@@ -3,18 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/top_rated_action"
-        app:showAsAction="never"
-        android:title="@string/top_rated_title"/>
+        android:title="@string/top_rated_title"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/most_popular_action"
         android:title="@string/most_popular_title"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/upcoming_action"
-        app:showAsAction="never"
-        android:title="@string/upcoming_title"/>
+        android:title="@string/upcoming_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/favorite_action"
+        android:title="@string/favorite_title"
+        app:showAsAction="never" />
 
 
 </menu>

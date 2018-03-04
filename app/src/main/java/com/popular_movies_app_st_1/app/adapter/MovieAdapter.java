@@ -7,16 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.popular_movies_app_st_1.app.R;
 import com.popular_movies_app_st_1.app.model.Movie;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    private ArrayList<Movie> moviesArrayList;
+    private List<Movie> mMoviesList;
 
     private final Context context;
 
@@ -26,8 +28,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         void onClick(int position);
     }
 
-    public MovieAdapter(ArrayList<Movie> moviesArrayList, Context context, MovieAdapterOnClickHandler clickHandler) {
-        this.moviesArrayList = moviesArrayList;
+
+    public MovieAdapter(List<Movie> moviesList, Context context, MovieAdapterOnClickHandler clickHandler) {
+        this.mMoviesList = moviesList;
         this.context = context;
         this.mClickHandler = clickHandler;
     }
@@ -46,15 +49,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
-        Picasso.with(context).load(moviesArrayList.get(position).getPosterImage()).into(holder.imageView);
+    public void onBindViewHolder(final MovieViewHolder holder, int position) {
+        String posterUri = mMoviesList.get(position).getPosterURL();
+        Picasso.with(context).load(posterUri).into(holder.imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                holder.progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        if (moviesArrayList != null) {
-            return moviesArrayList.size();
+        if (mMoviesList != null) {
+            return mMoviesList.size();
         } else {
             return 0;
         }
@@ -64,11 +78,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         final ImageView imageView;
+        final ProgressBar progressBar;
 
         MovieViewHolder(View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.tv_text);
+            progressBar = itemView.findViewById(R.id.poster_pb);
             itemView.setOnClickListener(this);
         }
 
@@ -81,8 +97,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public void setMoviesArray() {
-        moviesArrayList = null;
+        mMoviesList.clear();
         notifyDataSetChanged();
-
     }
 }

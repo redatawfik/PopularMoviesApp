@@ -3,9 +3,23 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffffff</color>
-    
+
     <color name="white_color">#ffffff</color>
     <color name="gray">#484848</color>
     <color name="black">#d6000000</color>
     <color name="red_color">#ef7c0000</color>
+
+    <color name="light_gray">#efa6a6a6</color>
+
+    <color name="details_activity_background">#efeaeaea</color>
+
+    <color name="blue">#3a3e6c</color>
+
+    <color name="movie_title_background">#d6484848</color>
+
+    <color name="card_title_background">#181818</color>
+    <color name="card_content_background">#212121</color>
+    <color name="title_text_color">#ffffff</color>
+    <color name="content_text_color">#f9e2e2e2</color>
+    <color name="author_text_color">#A99564</color>
 </resources>
