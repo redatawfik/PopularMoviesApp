@@ -248,7 +248,7 @@
             android:visibility="gone" />
 
 
-        <com.popular_movies_app_st_1.app.NonScrollListView
+        <com.movies.app.NonScrollListView
             android:id="@+id/lv_trailers_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -318,7 +318,7 @@
             android:visibility="gone" />
 
 
-        <com.popular_movies_app_st_1.app.NonScrollListView
+        <com.movies.app.NonScrollListView
             android:id="@+id/lv_reviews_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app;
+package com.movies.app;
 
 import org.junit.Test;
 

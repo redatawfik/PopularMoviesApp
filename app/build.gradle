@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.popular_movies_app_st_1.popular_movies_app"
+        applicationId "com.movies.app"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1

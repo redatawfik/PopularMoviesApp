@@ -1,9 +1,9 @@
-package com.popular_movies_app_st_1.app.rest;
+package com.movies.app.rest;
 
 
-import com.popular_movies_app_st_1.app.model.MovieTrailersResponse;
-import com.popular_movies_app_st_1.app.model.MoviesResponse;
-import com.popular_movies_app_st_1.app.model.ReviewsResponse;
+import com.movies.app.model.MovieTrailersResponse;
+import com.movies.app.model.MoviesResponse;
+import com.movies.app.model.ReviewsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

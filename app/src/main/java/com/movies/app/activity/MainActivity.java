@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app.activity;
+package com.movies.app.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +14,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.popular_movies_app_st_1.app.BuildConfig;
-import com.popular_movies_app_st_1.app.R;
-import com.popular_movies_app_st_1.app.adapter.MovieAdapter;
-import com.popular_movies_app_st_1.app.database.FavoriteMoviesContract;
-import com.popular_movies_app_st_1.app.model.Movie;
-import com.popular_movies_app_st_1.app.model.MoviesResponse;
-import com.popular_movies_app_st_1.app.rest.ApiClient;
-import com.popular_movies_app_st_1.app.rest.ApiInterface;
+import com.movies.app.BuildConfig;
+import com.movies.app.R;
+import com.movies.app.adapter.MovieAdapter;
+import com.movies.app.database.FavoriteMoviesContract;
+import com.movies.app.model.Movie;
+import com.movies.app.model.MoviesResponse;
+import com.movies.app.rest.ApiClient;
+import com.movies.app.rest.ApiInterface;
 
 
 import org.parceler.Parcels;

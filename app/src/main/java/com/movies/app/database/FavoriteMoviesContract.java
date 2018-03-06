@@ -1,11 +1,11 @@
-package com.popular_movies_app_st_1.app.database;
+package com.movies.app.database;
 
 
 import android.net.Uri;
 
 public class FavoriteMoviesContract {
 
-    public static final String AUTHORITY = "com.popular_movies_app_st_1.app";
+    public static final String AUTHORITY = "com.movies.app";
 
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 

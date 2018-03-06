@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app.rest;
+package com.movies.app.rest;
 
 
 import retrofit2.Retrofit;

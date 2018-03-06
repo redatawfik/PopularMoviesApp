@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app.database;
+package com.movies.app.database;
 
 
 import android.content.ContentProvider;
@@ -11,10 +11,10 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.popular_movies_app_st_1.app.database.FavoriteMoviesContract.FavoriteMoviesEntry;
+import com.movies.app.database.FavoriteMoviesContract.FavoriteMoviesEntry;
 
 
-import static com.popular_movies_app_st_1.app.database.FavoriteMoviesContract.FavoriteMoviesEntry.TABLE_NAME;
+import static com.movies.app.database.FavoriteMoviesContract.FavoriteMoviesEntry.TABLE_NAME;
 
 public class FavoriteMoviesContentProvider extends ContentProvider {
 

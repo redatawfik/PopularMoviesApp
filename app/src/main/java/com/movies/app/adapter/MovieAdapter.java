@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app.adapter;
+package com.movies.app.adapter;
 
 
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.popular_movies_app_st_1.app.R;
-import com.popular_movies_app_st_1.app.model.Movie;
+import com.movies.app.R;
+import com.movies.app.model.Movie;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

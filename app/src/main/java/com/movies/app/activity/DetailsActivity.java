@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app.activity;
+package com.movies.app.activity;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,20 +16,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.popular_movies_app_st_1.app.BuildConfig;
-import com.popular_movies_app_st_1.app.NonScrollListView;
-import com.popular_movies_app_st_1.app.R;
-import com.popular_movies_app_st_1.app.adapter.ReviewsAdapter;
-import com.popular_movies_app_st_1.app.adapter.TrailerAdapter;
-import com.popular_movies_app_st_1.app.model.Movie;
-import com.popular_movies_app_st_1.app.model.MovieTrailersResponse;
-import com.popular_movies_app_st_1.app.model.Review;
-import com.popular_movies_app_st_1.app.model.ReviewsResponse;
-import com.popular_movies_app_st_1.app.model.Trailer;
-import com.popular_movies_app_st_1.app.rest.ApiClient;
-import com.popular_movies_app_st_1.app.rest.ApiInterface;
+import com.movies.app.BuildConfig;
+import com.movies.app.NonScrollListView;
+import com.movies.app.R;
+import com.movies.app.adapter.ReviewsAdapter;
+import com.movies.app.adapter.TrailerAdapter;
+import com.movies.app.model.Movie;
+import com.movies.app.model.MovieTrailersResponse;
+import com.movies.app.model.Review;
+import com.movies.app.model.ReviewsResponse;
+import com.movies.app.model.Trailer;
+import com.movies.app.rest.ApiClient;
+import com.movies.app.rest.ApiInterface;
 import com.squareup.picasso.Picasso;
-import com.popular_movies_app_st_1.app.database.FavoriteMoviesContract.FavoriteMoviesEntry;
+import com.movies.app.database.FavoriteMoviesContract.FavoriteMoviesEntry;
 
 import org.parceler.Parcels;
 

@@ -1,4 +1,4 @@
-package com.popular_movies_app_st_1.app.adapter;
+package com.movies.app.adapter;
 
 
 import android.content.Context;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.popular_movies_app_st_1.app.R;
-import com.popular_movies_app_st_1.app.model.Trailer;
+import com.movies.app.R;
+import com.movies.app.model.Trailer;
 
 import java.util.List;
 
