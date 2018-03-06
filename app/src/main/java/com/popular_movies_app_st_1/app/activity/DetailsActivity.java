@@ -16,11 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.popular_movies_app_st_1.app.BuildConfig;
 import com.popular_movies_app_st_1.app.NonScrollListView;
 import com.popular_movies_app_st_1.app.R;
 import com.popular_movies_app_st_1.app.adapter.ReviewsAdapter;
 import com.popular_movies_app_st_1.app.adapter.TrailerAdapter;
-import com.popular_movies_app_st_1.app.database.FavoriteMoviesDbHelper;
 import com.popular_movies_app_st_1.app.model.Movie;
 import com.popular_movies_app_st_1.app.model.MovieTrailersResponse;
 import com.popular_movies_app_st_1.app.model.Review;
@@ -49,10 +49,11 @@ public class DetailsActivity extends AppCompatActivity {
     private List<Review> mReviewsList;
     private List<Trailer> mTrailersList;
 
-    Context context = this;
+    private final Context context = this;
 
 
-    private static final String KEY = "3b30f866a7207700fc7708ba2851a1ca";
+
+    private static final String API_KEY = BuildConfig.API_KEY;
 
 
     @BindView(R.id.tv_movie_name)
@@ -93,17 +94,16 @@ public class DetailsActivity extends AppCompatActivity {
     TextView noReviewsMessage;
 
 
-    ReviewsAdapter mReviewsAdapter;
-    TrailerAdapter mTrailerAdapter;
+    private ReviewsAdapter mReviewsAdapter;
+    private TrailerAdapter mTrailerAdapter;
 
-    ApiInterface apiService;
+    private ApiInterface apiService;
 
-    FavoriteMoviesDbHelper mDbHelper;
 
     private Boolean favoriteImageClicked;
-    SharedPreferences sharedPreferences;
-    public static final String MyPREFERENCES = "MyPrefs";
-    public static String FAVORITE_STATE_KEY;
+    private SharedPreferences sharedPreferences;
+    private static final String MyPREFERENCES = "MyPrefs";
+    private static String FAVORITE_STATE_KEY;
 
 
     @Override
@@ -120,9 +120,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         readFromIntent();
-
-        mDbHelper = new FavoriteMoviesDbHelper(this);
-
 
         sharedPreferences = this.getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         //store movie state( favorite or not) in a key represent movie id
@@ -215,15 +212,14 @@ public class DetailsActivity extends AppCompatActivity {
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<ReviewsResponse> call = apiService.getReviewsList(mMovie.getId(), KEY);
+        Call<ReviewsResponse> call = apiService.getReviewsList(mMovie.getId(), API_KEY);
 
         call.enqueue(new Callback<ReviewsResponse>() {
             @Override
             public void onResponse(Call<ReviewsResponse> call, Response<ReviewsResponse> response) {
                 reviewsLoadingProgressBar.setVisibility(View.GONE);
                 List<Review> reviewsList = response.body().getResults();
-                if (reviewsList.size() > 0) {
-
+                if (reviewsList.size() > 0 ) {
                     mReviewsList.addAll(reviewsList);
                     mReviewsAdapter.notifyDataSetChanged();
 
@@ -243,7 +239,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void getTrailersList() {
 
-        Call<MovieTrailersResponse> call = apiService.getVideosList(mMovie.getId(), KEY);
+        Call<MovieTrailersResponse> call = apiService.getVideosList(mMovie.getId(), API_KEY);
 
         call.enqueue(new Callback<MovieTrailersResponse>() {
             @Override
@@ -319,7 +315,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     //Check current state of favorite button to set background
     //Called on onCreate method and when favorite button clicked
-    public void setFavoriteImageBackground() {
+    private void setFavoriteImageBackground() {
 
         if (!favoriteImageClicked) {
             favoriteImage.setImageResource(R.drawable.ic_favorite_border_black_24dp);
@@ -330,7 +326,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     //Method delete called and insert movie from database
     //when favorite button clicked
-    void insertMovieIntoDatabase() {
+    private void insertMovieIntoDatabase() {
 
         ContentValues values = new ContentValues();
 
@@ -342,7 +338,7 @@ public class DetailsActivity extends AppCompatActivity {
         values.put(FavoriteMoviesEntry.COLUMN_MOVIE_POSTER_URL, mMovie.getPosterPath());
         values.put(FavoriteMoviesEntry.COLUMN_MOVIE_BACKDROP_URL, mMovie.getBackdropPath());
 
-        Uri uri = getContentResolver().insert(FavoriteMoviesEntry.CONTENT_URI, values);
+        getContentResolver().insert(FavoriteMoviesEntry.CONTENT_URI, values);
 
         Toast.makeText(this, "Movie added to favorites", Toast.LENGTH_SHORT).show();
 
@@ -351,12 +347,12 @@ public class DetailsActivity extends AppCompatActivity {
 
     //Method delete called and delete movie from database
     //when favorite button clicked
-    void deleteMovieFromDatabase() {
+    private void deleteMovieFromDatabase() {
 
 
         String movieId = mMovie.getId().toString();
         Uri uri = FavoriteMoviesEntry.CONTENT_URI.buildUpon().appendPath(movieId).build();
-        int i = getContentResolver().delete(uri, null, null);
+        getContentResolver().delete(uri, null, null);
 
         Toast.makeText(this, "Movie deleted from favorites", Toast.LENGTH_SHORT).show();
 

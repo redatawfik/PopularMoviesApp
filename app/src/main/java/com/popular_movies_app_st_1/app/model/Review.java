@@ -7,10 +7,10 @@ public class Review {
 
 
     @SerializedName("author")
-    String author;
+    private String author;
 
     @SerializedName("content")
-    String content;
+    private String content;
 
     public String getAuthor() {
         return author;

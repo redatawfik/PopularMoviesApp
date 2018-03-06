@@ -10,8 +10,8 @@ import com.popular_movies_app_st_1.app.database.FavoriteMoviesContract.FavoriteM
 
 public class FavoriteMoviesDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "FavoriteMovies.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "FavoriteMovies.db";
 
     public FavoriteMoviesDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

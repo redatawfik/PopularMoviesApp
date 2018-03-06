@@ -13,33 +13,33 @@ public class Movie {
     private static final String BACKDROP_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w780/";
 
     @SerializedName("poster_path")
-    String posterPath;
+    private String posterPath;
     @SerializedName("adult")
-    boolean adult;
+    private boolean adult;
     @SerializedName("overview")
-    String overview;
+    private String overview;
     @SerializedName("release_date")
-    String releaseDate;
+    private String releaseDate;
     @SerializedName("genre_ids")
-    List<Integer> genreIds = new ArrayList<>();
+    private List<Integer> genreIds = new ArrayList<>();
     @SerializedName("id")
-    Integer id;
+    private Integer id;
     @SerializedName("original_title")
-    String originalTitle;
+    private String originalTitle;
     @SerializedName("original_language")
-    String originalLanguage;
+    private String originalLanguage;
     @SerializedName("title")
-    String title;
+    private String title;
     @SerializedName("backdrop_path")
-    String backdropPath;
+    private  String backdropPath;
     @SerializedName("popularity")
-    Double popularity;
+    private  Double popularity;
     @SerializedName("vote_count")
-    Integer voteCount;
+    private  Integer voteCount;
     @SerializedName("video")
-    Boolean video;
+    private  Boolean video;
     @SerializedName("vote_average")
-    Double voteAverage;
+    private Double voteAverage;
     String stringVoteAverage;
 
     public Movie() {

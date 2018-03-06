@@ -7,7 +7,7 @@ public class FavoriteMoviesContract {
 
     public static final String AUTHORITY = "com.popular_movies_app_st_1.app";
 
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
     public static final String PATH_FAVORITE_MOVIES = "favoriteMovies";
 

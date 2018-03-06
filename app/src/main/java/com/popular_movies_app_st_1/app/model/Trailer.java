@@ -10,15 +10,15 @@ public class Trailer {
     private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
 
     @SerializedName("id")
-    String id;
+    private String id;
 
 
     @SerializedName("key")
-    String key;
+    private String key;
 
 
     @SerializedName("name")
-    String name;
+    private String name;
 
 
     public String getId() {

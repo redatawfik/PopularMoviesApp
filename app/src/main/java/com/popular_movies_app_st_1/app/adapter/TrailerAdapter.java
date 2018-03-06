@@ -33,7 +33,7 @@ public class TrailerAdapter extends ArrayAdapter<Trailer> {
         }
 
         TextView trailerName = convertView.findViewById(R.id.tv_trailer_name);
-        trailerName.setText(trailer.getName());
+        trailerName.setText(trailer != null ? trailer.getName() : null);
 
         return convertView;
 

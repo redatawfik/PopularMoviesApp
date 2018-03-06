@@ -18,13 +18,13 @@ import static com.popular_movies_app_st_1.app.database.FavoriteMoviesContract.Fa
 
 public class FavoriteMoviesContentProvider extends ContentProvider {
 
-    public static final int TASKS = 100;
-    public static final int TASK_WITH_ID = 101;
+    private static final int TASKS = 100;
+    private static final int TASK_WITH_ID = 101;
 
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
 
-    public static UriMatcher buildUriMatcher() {
+    private static UriMatcher buildUriMatcher() {
 
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -35,7 +35,7 @@ public class FavoriteMoviesContentProvider extends ContentProvider {
     }
 
 
-    FavoriteMoviesDbHelper mDbHelper;
+    private FavoriteMoviesDbHelper mDbHelper;
 
     @Override
     public boolean onCreate() {

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.popular_movies_app_st_1.app.BuildConfig;
 import com.popular_movies_app_st_1.app.R;
 import com.popular_movies_app_st_1.app.adapter.MovieAdapter;
 import com.popular_movies_app_st_1.app.database.FavoriteMoviesContract;
@@ -36,7 +37,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String API_KEY = BuildConfig.API_KEY;
 
     @BindView(R.id.rv_movies)
     RecyclerView mRecyclerView;
@@ -150,13 +151,13 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
 
-    void getResponseRetrofit() {
+    private void getResponseRetrofit() {
 
         progressBar.setVisibility(View.VISIBLE);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<MoviesResponse> call = apiService.getMoviesList(sortBy, "3b30f866a7207700fc7708ba2851a1ca");
+        Call<MoviesResponse> call = apiService.getMoviesList(sortBy, API_KEY);
 
         call.enqueue(new Callback<MoviesResponse>() {
             @Override
@@ -181,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
 
-    public void readFavoriteMoviesFromSQLite() {
+    private void readFavoriteMoviesFromSQLite() {
 
         Cursor cursor = getContentResolver().query(
                 FavoriteMoviesContract.FavoriteMoviesEntry.CONTENT_URI,
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 null,
                 null);
 
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
 
             while (!cursor.isAfterLast()) {
 
@@ -208,6 +209,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
                 cursor.moveToNext();
             }
+        }
+
+        if (cursor != null) {
+            cursor.close();
         }
 
 
