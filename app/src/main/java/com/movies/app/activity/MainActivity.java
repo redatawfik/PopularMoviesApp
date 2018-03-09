@@ -2,6 +2,7 @@ package com.movies.app.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,7 +51,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private static final String TOP_RATED = "top_rated";
     private static final String MOST_POPULAR = "popular";
     private static final String UPCOMING = "upcoming";
+    private static final String FAVORITE = "favorite";
     private String sortBy;
+    private static final String SORT_ORDER_KEY = "sortOrderKey";
 
     private final Context context = this;
     private List<Movie> mMoviesList;
@@ -63,18 +66,38 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        sortBy = MOST_POPULAR;
+
+        if (savedInstanceState != null && savedInstanceState.containsKey(SORT_ORDER_KEY)) {
+            sortBy = savedInstanceState.getString(SORT_ORDER_KEY);
+        } else {
+            sortBy = MOST_POPULAR;
+        }
+
 
         mMoviesList = new ArrayList<>();
 
-
         int numberOfColumn = 2;
+
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            numberOfColumn = 2;
+        } else {
+            numberOfColumn = 3;
+        }
+
+
         GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfColumn);
         mRecyclerView.setLayoutManager(layoutManager);
 
         mMovieAdapter = new MovieAdapter(mMoviesList, context, (MovieAdapter.MovieAdapterOnClickHandler) context);
 
-        getResponseRetrofit();
+        if (sortBy.equals(FAVORITE)) {
+            readFavoriteMoviesFromSQLite();
+            mRecyclerView.setAdapter(mMovieAdapter);
+        }else{
+
+            getResponseRetrofit();
+        }
 
 
     }
@@ -135,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             return true;
 
         } else if (itemId == R.id.favorite_action) {
+            sortBy = FAVORITE;
             mMovieAdapter.setMoviesArray();
             showMoviesList();
             readFavoriteMoviesFromSQLite();
@@ -218,5 +242,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(SORT_ORDER_KEY, sortBy);
+    }
 }
