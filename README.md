@@ -13,7 +13,7 @@ This is the second project in Udacity's Android Developer Nanodegree. The purpos
 7. Adheres to Material Design specs.
 
 ## Screenshots:
-![screenshot_20180306-231737](https://user-images.githubusercontent.com/13278795/37063729-0f4529d8-21a3-11e8-81ff-a86819f04d1a.png)
+![screenshot_20180306-231737](https://user-images.githubusercontent.com/13278795/37063729-0f4529d8-21a3-11e8-81ff-a86819f04d1a.png){:height="24px" width="48px"}
 
 ![screenshot_20180304-162856](https://user-images.githubusercontent.com/13278795/37061334-de260fae-219b-11e8-8c16-365403a914c2.jpg)
 
