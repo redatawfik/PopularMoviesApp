@@ -13,9 +13,12 @@ This is the second project in Udacity's Android Developer Nanodegree. The purpos
 7. Adheres to Material Design specs.
 
 ## Screenshots:
+<img width="45%" src="https://user-images.githubusercontent.com/13278795/42708332-4b017536-86dd-11e8-9986-5012b42ddad5.png" />
 
-<img width="45%" src="https://user-images.githubusercontent.com/13278795/37063729-0f4529d8-21a3-11e8-81ff-a86819f04d1a.png" />
-<img width="45%" src="https://user-images.githubusercontent.com/13278795/37061334-de260fae-219b-11e8-8c16-365403a914c2.jpg" />
+<img width="45%" src="https://user-images.githubusercontent.com/13278795/42709221-0fd713a0-86e0-11e8-83a0-fd5062cd7c75.png" />
+
+
+
 
 ## Libraries:
 * [ButterKnife](https://github.com/JakeWharton/butterknife)
