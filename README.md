@@ -12,6 +12,15 @@ This is the second project in Udacity's Android Developer Nanodegree. The purpos
 6. Reviews from TMDb users.
 7. Adheres to Material Design specs.
 
+## Getting Started
+
+You can clone this repo by running this command ``` git clone ``` on git bash or linux/mac terminal.
+
+### Prerequisites
+
+To run the App on your device, just import to android studio from gradle.
+Then Sync project so gradle can download everything you need
+
 ## Screenshots:
 <img width="45%" src="https://user-images.githubusercontent.com/13278795/42708332-4b017536-86dd-11e8-9986-5012b42ddad5.png" />
 
@@ -25,6 +34,16 @@ This is the second project in Udacity's Android Developer Nanodegree. The purpos
 * [Retrofit](https://github.com/square/retrofit)
 * [Picasso](http://square.github.io/picasso/)
 * [Parceler](https://github.com/johncarl81/parceler)
+
+### Contributors on GitHub
+Please feel free to make a pull request. There is so much to improve on.
+
+Also few tests have been written, and hopefully we can have more from your contribution so to fix those hidden bugs and ensure the project is safe to use for learning
+
+#### Developer
+* e-mail : reda.rm148@gmail.com
+* Linkedin: [redatawfik](https://www.linkedin.com/in/redatawfik/)
+
 
 
 License
